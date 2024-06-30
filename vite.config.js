@@ -8,7 +8,6 @@ export default defineConfig({
     org: "devsidyll",
     project: "javascript-react"
   })],
-  base: '/Apple-3D-Website/',
   build: {
     sourcemap: true
   }
