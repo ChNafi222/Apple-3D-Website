@@ -24,6 +24,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    base: mode === 'production' ? '/Apple-3D-Website/' : '/',
+    base: mode === 'production' ? '/' : '/',
   }
 });
