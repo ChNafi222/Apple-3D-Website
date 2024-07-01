@@ -1,6 +1,6 @@
-import { sentryVitePlugin } from "@sentry/vite-plugin";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { sentryVitePlugin } from '@sentry/vite-plugin'; // Ensure this import is correct
 
 export default defineConfig(({ mode }) => {
   return {
@@ -12,9 +12,18 @@ export default defineConfig(({ mode }) => {
       })
     ],
     build: {
-      sourcemap: true
+      sourcemap: true,
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom'],
+            'three-vendor': ['three'],
+            'gsap-vendor': ['gsap'],
+          },
+        },
+      },
     },
-    // Use a conditional base path to handle both local development and production deployment
-    base: mode === 'production' ? '/' : '/',
+    base: mode === 'production' ? '/Apple-3D-Website/' : '/',
   }
 });
